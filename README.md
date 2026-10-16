@@ -1,58 +1,95 @@
-# DIO - Trilha .NET - API e Entity Framework
-www.dio.me
+# 📋 Sistema Gerenciador de Tarefas — API REST
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
+API REST desenvolvida em **C# e ASP.NET Core**, utilizando **Entity Framework Core** e **SQL Server** para gerenciamento de tarefas.
 
-## Contexto
-Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
+Projeto desenvolvido como parte do desafio prático da **Digital Innovation One (DIO)**, com o objetivo de aplicar conceitos de desenvolvimento Backend, persistência de dados e operações CRUD.
 
-Essa lista de tarefas precisa ter um CRUD, ou seja, deverá permitir a você obter os registros, criar, salvar e deletar esses registros.
+## 🚀 Tecnologias utilizadas
 
-A sua aplicação deverá ser do tipo Web API ou MVC, fique a vontade para implementar a solução que achar mais adequado.
+- C# e .NET 6
+- ASP.NET Core Web API
+- Entity Framework Core
+- Microsoft SQL Server
+- Swagger / OpenAPI
+- Git e GitHub
 
-A sua classe principal, a classe de tarefa, deve ser a seguinte:
+## ⚙️ Funcionalidades
 
-![Diagrama da classe Tarefa](diagrama.png)
+A aplicação permite:
 
-Não se esqueça de gerar a sua migration para atualização no banco de dados.
+- Cadastrar novas tarefas.
+- Consultar todas as tarefas cadastradas.
+- Buscar tarefas pelo identificador.
+- Filtrar tarefas por título, data e status.
+- Atualizar informações de tarefas existentes.
+- Excluir tarefas.
 
-## Métodos esperados
-É esperado que você crie o seus métodos conforme a seguir:
+## 🔗 Endpoints da API
 
+| Método | Endpoint | Descrição |
+|---|---|---|
+| GET | `/Tarefa/{id}` | Buscar tarefa pelo ID |
+| GET | `/Tarefa/ObterTodos` | Listar todas as tarefas |
+| GET | `/Tarefa/ObterPorTitulo` | Filtrar pelo título |
+| GET | `/Tarefa/ObterPorData` | Filtrar pela data |
+| GET | `/Tarefa/ObterPorStatus` | Filtrar pelo status |
+| POST | `/Tarefa` | Cadastrar uma tarefa |
+| PUT | `/Tarefa/{id}` | Atualizar uma tarefa |
+| DELETE | `/Tarefa/{id}` | Excluir uma tarefa |
 
-**Swagger**
+## 🗄️ Banco de dados
 
+A aplicação utiliza **SQL Server** e **Entity Framework Core**, com migrations para gerenciamento da estrutura do banco de dados.
 
-![Métodos Swagger](swagger.png)
+### Configuração local
 
+**Pré-requisitos:**
 
-**Endpoints**
+- SDK do .NET 6
+- SQL Server
+- Ferramenta `dotnet-ef`
 
+Clone o repositório:
 
-| Verbo  | Endpoint                | Parâmetro | Body          |
-|--------|-------------------------|-----------|---------------|
-| GET    | /Tarefa/{id}            | id        | N/A           |
-| PUT    | /Tarefa/{id}            | id        | Schema Tarefa |
-| DELETE | /Tarefa/{id}            | id        | N/A           |
-| GET    | /Tarefa/ObterTodos      | N/A       | N/A           |
-| GET    | /Tarefa/ObterPorTitulo  | titulo    | N/A           |
-| GET    | /Tarefa/ObterPorData    | data      | N/A           |
-| GET    | /Tarefa/ObterPorStatus  | status    | N/A           |
-| POST   | /Tarefa                 | N/A       | Schema Tarefa |
-
-Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que exigirem
-
-```json
-{
-  "id": 0,
-  "titulo": "string",
-  "descricao": "string",
-  "data": "2022-06-08T01:31:07.056Z",
-  "status": "Pendente"
-}
+```bash
+git clone https://github.com/jose-nt7/trilha-net-api-desafio.git
+cd trilha-net-api-desafio
 ```
 
+Configure a string de conexão `ConexaoPadrao` no arquivo `appsettings.json` de acordo com sua instância local do SQL Server.
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+Restaure as dependências:
+
+```bash
+dotnet restore
+```
+
+Aplique as migrations:
+
+```bash
+dotnet ef database update
+```
+
+Execute a aplicação:
+
+```bash
+dotnet run
+```
+
+Acesse a documentação interativa do Swagger pelo endereço HTTPS informado no terminal, acrescentando `/swagger`.
+
+## 🧪 Testes realizados
+
+As funcionalidades foram verificadas por meio do Swagger, incluindo cadastro, consulta, filtros, atualização e exclusão de tarefas.
+
+A aplicação foi executada localmente com integração ao SQL Server.
+
+## 📚 Documentação original
+
+O material original disponibilizado pela DIO foi preservado em [docs/README-DIO.md](docs/README-DIO.md).
+
+## 👨‍💻 Autor
+
+**José Ribeiro**
+
+Projeto desenvolvido para fins educacionais e aprimoramento das habilidades em desenvolvimento Backend com C# e .NET.
